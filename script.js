@@ -14,7 +14,7 @@ function fetchAndUpdateData() {
       return response.json();
     })
     .then(data => {
-      //console.log(data);
+      console.log("loading");
       const killed_people = data.gaza.killed;
       totalElement.textContent = killed_people.total;
       childrenElement.textContent = `Children: ${killed_people.children}`;
@@ -31,6 +31,9 @@ function fetchAndUpdateData() {
 fetchAndUpdateData();
 
 // Schedule the API request to occur every hour (in milliseconds)
-document.addEventListener("onload", () => {
-  setInterval(location.reload(),  15*1000);
-})
+// document.addEventListener("load", () => {
+//   setInterval(location.reload(),  5*1000);
+// })
+setInterval(()=>{
+  location.reload();
+}, 5000)
