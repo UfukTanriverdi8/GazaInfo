@@ -31,4 +31,4 @@ function fetchAndUpdateData() {
 fetchAndUpdateData();
 
 // Schedule the API request to occur every hour (in milliseconds)
-setInterval(location.reload(), 60 * 1000);
+setInterval(fetchAndUpdateData(), 60 * 1000);
