@@ -1,4 +1,3 @@
-
 const totalElement = document.querySelector('.total');
 const childrenElement = document.querySelector('.children');
 const womenElement = document.querySelector('.women');
@@ -14,26 +13,38 @@ function fetchAndUpdateData() {
       return response.json();
     })
     .then(data => {
-      console.log("loading");
-      const killed_people = data.gaza.killed;
-      totalElement.textContent = killed_people.total;
-      childrenElement.textContent = `Children: ${killed_people.children}`;
-      womenElement.textContent = `Women: ${killed_people.women}`;
-      pressElement.textContent = `Press: ${killed_people.press}`;
-      medicalPersonnelElement.textContent = `Medical Personnel: ${killed_people.medical}`;
+    const killed_people = data.gaza.killed;
+    totalElement.textContent = `${killed_people.total} şehit`;
+    childrenElement.textContent = `${killed_people.children} çocuk`;
+    womenElement.textContent = `${killed_people.women} kadın`;
+    pressElement.textContent = `${killed_people.press} basın mensubu`;
+      medicalPersonnelElement.textContent = `${killed_people.medical} tıbbi personel`;
     })
     .catch(error => {
       console.error('There was a problem with the fetch operation:', error);
     });
 }
 
-// Initial call
 fetchAndUpdateData();
 
-// Schedule the API request to occur every hour (in milliseconds)
-// document.addEventListener("load", () => {
-//   setInterval(location.reload(),  5*1000);
-// })
+// api call ile sitenin refreshlenmesi ayrılmalı bir şekilde !!
 setInterval(()=>{
   location.reload();
-}, 5000)
+}, 60000)
+
+let currentScreenIndex = 0;
+const screens = document.querySelectorAll('.screen');
+
+function showNextScreen() {
+  // Hide current screen
+  screens[currentScreenIndex].classList.remove('active');
+  
+  // Move to the next screen
+  currentScreenIndex = (currentScreenIndex + 1) % screens.length;
+
+  // Show the next screen
+  screens[currentScreenIndex].classList.add('active');
+}
+
+// Start the slideshow
+setInterval(showNextScreen, 5000); 
