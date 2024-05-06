@@ -14,11 +14,11 @@ function fetchAndUpdateData() {
     })
     .then(data => {
     const killed_people = data.gaza.killed;
-    totalElement.textContent = `${killed_people.total} şehit`;
-    childrenElement.textContent = `${killed_people.children} çocuk`;
-    womenElement.textContent = `${killed_people.women} kadın`;
-    pressElement.textContent = `${killed_people.press} basın mensubu`;
-      medicalPersonnelElement.textContent = `${killed_people.medical} tıbbi personel`;
+    totalElement.textContent += `${killed_people.total} şehit`;
+    childrenElement.innerHTML += `${killed_people.children} çocuk`;
+    womenElement.innerHTML += `${killed_people.women} kadın`;
+    pressElement.innerHTML += `${killed_people.press} basın mensubu`;
+    medicalPersonnelElement.innerHTML += `${killed_people.medical} tıbbi personel`;
     })
     .catch(error => {
       console.error('There was a problem with the fetch operation:', error);
@@ -32,7 +32,10 @@ setInterval(()=>{
   location.reload();
 }, 60000)
 
-let currentScreenIndex = 0;
+
+
+// screen değiştirme
+/*let currentScreenIndex = 0;
 const screens = document.querySelectorAll('.screen');
 
 function showNextScreen() {
@@ -47,4 +50,4 @@ function showNextScreen() {
 }
 
 // Start the slideshow
-setInterval(showNextScreen, 5000); 
+setInterval(showNextScreen, 5000); */
