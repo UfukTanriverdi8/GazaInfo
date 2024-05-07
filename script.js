@@ -1,8 +1,8 @@
-const totalElement = document.querySelector('.total');
-const childrenElement = document.querySelector('.children');
-const womenElement = document.querySelector('.women');
-const pressElement = document.querySelector('.press');
-const medicalPersonnelElement = document.querySelector('.medical_personnel');
+const total_gaza = document.getElementById('total_gaza');
+const children_gaza = document.getElementById('children_gaza');
+const women_gaza = document.getElementById('women_gaza');
+const press_gaza = document.getElementById('press_gaza');
+const medical_gaza = document.getElementById('medical_gaza');
 
 function fetchAndUpdateData() {
   fetch('https://data.techforpalestine.org/api/v3/summary.min.json')
@@ -13,12 +13,12 @@ function fetchAndUpdateData() {
       return response.json();
     })
     .then(data => {
-    const killed_people = data.gaza.killed;
-    totalElement.textContent += `${killed_people.total} şehit`;
-    childrenElement.innerHTML += `${killed_people.children} çocuk`;
-    womenElement.innerHTML += `${killed_people.women} kadın`;
-    pressElement.innerHTML += `${killed_people.press} basın mensubu`;
-    medicalPersonnelElement.innerHTML += `${killed_people.medical} tıbbi personel`;
+    const dataset_gaza = data.gaza.killed;
+    total_gaza.textContent += `${dataset_gaza.total} şehit`;
+    children_gaza.innerHTML += `${dataset_gaza.children} çocuk`;
+    women_gaza.innerHTML += `${dataset_gaza.women} kadın`;
+    press_gaza.innerHTML += `${dataset_gaza.press} basın mensubu`;
+    medical_gaza.innerHTML += `${dataset_gaza.medical} tıbbi personel`;
     })
     .catch(error => {
       console.error('There was a problem with the fetch operation:', error);
@@ -33,12 +33,11 @@ setInterval(()=>{
 }, 60000)
 
 
-
-// screen değiştirme
-/*let currentScreenIndex = 0;
-const screens = document.querySelectorAll('.screen');
-
 function showNextScreen() {
+
+  let currentScreenIndex = 0;
+  const screens = document.querySelectorAll('.screen');
+
   // Hide current screen
   screens[currentScreenIndex].classList.remove('active');
   
@@ -50,4 +49,4 @@ function showNextScreen() {
 }
 
 // Start the slideshow
-setInterval(showNextScreen, 5000); */
+// (showNextScreen, 2000);
