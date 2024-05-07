@@ -34,31 +34,18 @@ function fetchAndUpdateData() {
 
 fetchAndUpdateData();
 
-function growNumber(target, number) {
-  const currentNumber = Number(target.textContent);
-  const difference = number - currentNumber;
-  let currentStep = 0;
+function growNumber(targetElement, number) {
+  var currentNumber = 0;
+  var step = number / 60; // Dividing the target number by the number of steps (60 steps here)
 
-  const interval = setInterval(() => {
-    target.textContent = currentNumber + currentStep;
-    if (currentStep < difference + 100){
-      currentStep += 100;
+  var interval = setInterval(function() {
+    currentNumber += step;
+    if (currentNumber >= number) {
+      clearInterval(interval); // Stop the interval when reaching the target number
+      currentNumber = number;
     }
-    if (currentStep < difference + 10){
-      currentStep += 10;
-    }
-    if (currentStep < difference + 3){
-      currentStep += 3;
-    }
-    if (currentStep <= difference) {
-      console.log("XXXXX")
-      currentStep += 1;
-    } 
-    else {
-      clearInterval(interval);
-      console.log('number transition complete');
-    }
-  }, 1);
+    targetElement.textContent = Math.round(currentNumber); // Update the text content of the target element
+  }, 1000 / 60); // 60 FPS
 }
 
 
