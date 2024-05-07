@@ -4,7 +4,8 @@ const women_gaza = document.getElementById('women_gaza');
 const press_gaza = document.getElementById('press_gaza');
 const medical_gaza = document.getElementById('medical_gaza');
 
-function fetchAndUpdateData() {
+
+function fetchData() {
   fetch('https://data.techforpalestine.org/api/v3/summary.min.json')
     .then(response => {
       if (!response.ok) {
@@ -13,26 +14,45 @@ function fetchAndUpdateData() {
       return response.json();
     })
     .then(data => {
-    const dataset_gaza = data.gaza.killed;
-    
-    const totalNumber = document.getElementById('total_number');
-    const childrenNumber = document.getElementById('children_number');
-    const womenNumber = document.getElementById('women_number');
-    const pressNumber = document.getElementById('press_number');
-    const medicalNumber = document.getElementById('medical_number');
+      updateData(data);
 
-    growNumber(totalNumber, dataset_gaza.total);
-    growNumber(childrenNumber, dataset_gaza.children);
-    growNumber(womenNumber, dataset_gaza.women);
-    growNumber(pressNumber, dataset_gaza.press);
-    growNumber(medicalNumber, dataset_gaza.medical);
     })
     .catch(error => {
       console.error('There was a problem with the fetch operation:', error);
     });
 }
 
-fetchAndUpdateData();
+function updateData(data) {
+  const dataset_gaza = data.gaza.killed;
+    
+  const total_number = document.getElementById('total_number');
+  const children_number = document.getElementById('children_number');
+  const women_number = document.getElementById('women_number');
+  const press_number = document.getElementById('press_number');
+  const medical_number = document.getElementById('medical_number');
+
+  growNumber(total_number, dataset_gaza.total);
+  growNumber(children_number, dataset_gaza.children);
+  growNumber(women_number, dataset_gaza.women);
+  growNumber(press_number, dataset_gaza.press);
+  growNumber(medical_number, dataset_gaza.medical);
+}
+
+fetchData();
+
+/* yarım kalan kısım, sayfalar arası geçişlerde sayıların büyümesi efekti yenilenmeli 
+
+if the active screen is class="data_page", then call the update Data function 
+
+let current_page = document.querySelector('.active_screen');
+
+if (current_page.classList.contains('data_page')) {
+  fetchData();
+  updateData(data);
+} 
+*/
+
+
 
 function growNumber(targetElement, number) {
   var currentNumber = 0;
@@ -60,14 +80,14 @@ const screens = document.querySelectorAll('.screen');
 function showNextScreen() {
 
     // Hide current screen
-  screens[currentScreenIndex].classList.remove('active');
+  screens[currentScreenIndex].classList.remove('active_screen');
   
   // Move to the next screen
   currentScreenIndex = (currentScreenIndex + 1) % screens.length;
 
   // Show the next screen
-  screens[currentScreenIndex].classList.add('active');
+  screens[currentScreenIndex].classList.add('active_screen');
 }
 
 // Start the slideshow (change interval set to 2000ms for testing purposes)
-// setInterval(showNextScreen, 2000);
+setInterval(showNextScreen, 5000);

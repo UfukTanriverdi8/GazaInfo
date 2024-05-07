@@ -4,6 +4,7 @@ html, body {
     width: 100%;
     height: 100%;
     overflow: hidden; /* Hide overflow content */
+    background-color: rgb(53, 53, 53);
 }  
 
 svg { /* icons */
@@ -18,15 +19,7 @@ svg { /* icons */
     height: 100%;
     opacity: 0;
     pointer-events: none;
-}
 
-.active {
-    opacity: 1;
-    transition: opacity 1.2s ease;
-    pointer-events: none;
-}
-
-.data_page { /* numbers page */
     background-color: rgb(53, 53, 53);
     color:#ececec;
     text-align: center;
@@ -36,6 +29,17 @@ svg { /* icons */
     align-items: center;
     flex-direction: column; /* Stack items vertically */
     justify-content: center;
+}
+
+.active_screen {
+    opacity: 1;
+    transition: opacity 1.2s ease;
+    pointer-events: none;
+}
+
+.data_page { /* numbers page */
+    /* generic attributes moved to the .screen class */
+
 }
 
 .data_page .total_data{
