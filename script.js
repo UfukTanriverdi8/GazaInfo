@@ -4,6 +4,7 @@ const women_gaza = document.getElementById('women_gaza');
 const press_gaza = document.getElementById('press_gaza');
 const medical_gaza = document.getElementById('medical_gaza');
 
+let dataset
 
 function fetchData() {
   fetch('https://data.techforpalestine.org/api/v3/summary.min.json')
@@ -14,7 +15,9 @@ function fetchData() {
       return response.json();
     })
     .then(data => {
-      updateData(data);
+      /* update dataset */ 
+      dataset = data;
+      updateData(dataset);
 
     })
     .catch(error => {
@@ -40,20 +43,6 @@ function updateData(data) {
 
 fetchData();
 
-/* yarım kalan kısım, sayfalar arası geçişlerde sayıların büyümesi efekti yenilenmeli 
-
-if the active screen is class="data_page", then call the update Data function 
-
-let current_page = document.querySelector('.active_screen');
-
-if (current_page.classList.contains('data_page')) {
-  fetchData();
-  updateData(data);
-} 
-*/
-
-
-
 function growNumber(targetElement, number) {
   var currentNumber = 0;
   var step = number / 60; // Dividing the target number by the number of steps (60 steps here)
@@ -77,7 +66,7 @@ setInterval(()=>{
 let currentScreenIndex = 0;
 const screens = document.querySelectorAll('.screen');
 
-function showNextScreen() {
+function changeScreen() {
 
     // Hide current screen
   screens[currentScreenIndex].classList.remove('active_screen');
@@ -87,7 +76,14 @@ function showNextScreen() {
 
   // Show the next screen
   screens[currentScreenIndex].classList.add('active_screen');
+
+
+  let current_page = document.querySelector('.active_screen');
+
+  if (current_page.classList.contains('data_page')) {
+    updateData(dataset);
+} 
 }
 
 // Start the slideshow (change interval set to 2000ms for testing purposes)
-setInterval(showNextScreen, 5000);
+setInterval(changeScreen, 5000);
