@@ -14,11 +14,18 @@ function fetchAndUpdateData() {
     })
     .then(data => {
     const dataset_gaza = data.gaza.killed;
-    total_gaza.textContent += `${dataset_gaza.total} şehit`;
-    children_gaza.innerHTML += `${dataset_gaza.children} çocuk`;
-    women_gaza.innerHTML += `${dataset_gaza.women} kadın`;
-    press_gaza.innerHTML += `${dataset_gaza.press} basın mensubu`;
-    medical_gaza.innerHTML += `${dataset_gaza.medical} tıbbi personel`;
+    
+    const totalNumber = document.getElementById('total_number');
+    const childrenNumber = document.getElementById('children_number');
+    const womenNumber = document.getElementById('women_number');
+    const pressNumber = document.getElementById('press_number');
+    const medicalNumber = document.getElementById('medical_number');
+
+    growNumber(totalNumber, dataset_gaza.total);
+    growNumber(childrenNumber, dataset_gaza.children);
+    growNumber(womenNumber, dataset_gaza.women);
+    growNumber(pressNumber, dataset_gaza.press);
+    growNumber(medicalNumber, dataset_gaza.medical);
     })
     .catch(error => {
       console.error('There was a problem with the fetch operation:', error);
@@ -27,18 +34,45 @@ function fetchAndUpdateData() {
 
 fetchAndUpdateData();
 
+function growNumber(target, number) {
+  const currentNumber = Number(target.textContent);
+  const difference = number - currentNumber;
+  let currentStep = 0;
+
+  const interval = setInterval(() => {
+    target.textContent = currentNumber + currentStep;
+    if (currentStep < difference + 100){
+      currentStep += 100;
+    }
+    if (currentStep < difference + 10){
+      currentStep += 10;
+    }
+    if (currentStep < difference + 3){
+      currentStep += 3;
+    }
+    if (currentStep <= difference) {
+      console.log("XXXXX")
+      currentStep += 1;
+    } 
+    else {
+      clearInterval(interval);
+      console.log('number transition complete');
+    }
+  }, 1);
+}
+
+
 // api call ile sitenin refreshlenmesi ayrılmalı bir şekilde !!
 setInterval(()=>{
   location.reload();
 }, 60000)
 
+let currentScreenIndex = 0;
+const screens = document.querySelectorAll('.screen');
 
 function showNextScreen() {
 
-  let currentScreenIndex = 0;
-  const screens = document.querySelectorAll('.screen');
-
-  // Hide current screen
+    // Hide current screen
   screens[currentScreenIndex].classList.remove('active');
   
   // Move to the next screen
@@ -48,5 +82,5 @@ function showNextScreen() {
   screens[currentScreenIndex].classList.add('active');
 }
 
-// Start the slideshow
-// (showNextScreen, 2000);
+// Start the slideshow (change interval set to 2000ms for testing purposes)
+// setInterval(showNextScreen, 2000);
