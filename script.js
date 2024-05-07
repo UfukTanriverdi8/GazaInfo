@@ -40,6 +40,10 @@ function updateData(data) {
   growNumber(press_number, dataset_gaza.press);
   growNumber(medical_number, dataset_gaza.medical);
 }
+const formatNumberWithCommas = (number) => {
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
+
 
 fetchData();
 
@@ -53,7 +57,8 @@ function growNumber(targetElement, number) {
       clearInterval(interval); // Stop the interval when reaching the target number
       currentNumber = number;
     }
-    targetElement.textContent = Math.round(currentNumber); // Update the text content of the target element
+    
+    targetElement.textContent = formatNumberWithCommas(Math.round(currentNumber)); // Update the text content of the target element
   }, 1000 / 60); // 60 FPS
 }
 
