@@ -1,1 +1,2 @@
-https://data.techforpalestine.org/api/v3/summary.min.json
+https://data.techforpalestine.org
+geçen gün sayısı ekle

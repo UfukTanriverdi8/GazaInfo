@@ -4,7 +4,7 @@ const women_gaza = document.getElementById('women_gaza');
 const press_gaza = document.getElementById('press_gaza');
 const medical_gaza = document.getElementById('medical_gaza');
 
-let dataset
+let dataset;
 
 function fetchData() {
   fetch('https://data.techforpalestine.org/api/v3/summary.min.json')
@@ -26,6 +26,7 @@ function fetchData() {
 }
 
 function updateData(data) {
+  console.log(data.gaza.last_update);
   const dataset_gaza = data.gaza.killed;
     
   const total_number = document.getElementById('total_number');
@@ -66,7 +67,7 @@ function growNumber(targetElement, number) {
 // api call ile sitenin refreshlenmesi ayrılmalı bir şekilde !!
 setInterval(()=>{
   location.reload();
-}, 60000)
+}, 300000)
 
 let currentScreenIndex = 0;
 const screens = document.querySelectorAll('.screen');
@@ -87,8 +88,23 @@ function changeScreen() {
 
   if (current_page.classList.contains('data_page')) {
     updateData(dataset);
-} 
+  }else if(current_page.classList.contains('image_page')){
+    const beforeContainers = current_page.querySelectorAll('.before-container');
+
+    beforeContainers.forEach((container) => {
+      const beforeImg = container.querySelector('.before');
+
+      // Reset the animation
+      beforeImg.style.animation = 'none';
+      beforeImg.offsetHeight; // Trigger reflow
+      beforeImg.style.animation = 'slide-out 3.5s ease-in-out forwards';
+    });
+
+  }
 }
+
 
 // Start the slideshow (change interval set to 2000ms for testing purposes)
 setInterval(changeScreen, 5000);
+
+

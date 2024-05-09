@@ -4,7 +4,7 @@ html, body {
     width: 100%;
     height: 100%;
     overflow: hidden; /* Hide overflow content */
-    background-color: rgb(53, 53, 53);
+    background-color: rgb(15, 0, 0);
 }  
 
 svg { /* icons */
@@ -19,8 +19,7 @@ svg { /* icons */
     height: 100%;
     opacity: 0;
     pointer-events: none;
-
-    background-color: rgb(53, 53, 53);
+    background-color: rgb(15, 0, 0);
     color:#ececec;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
@@ -30,6 +29,18 @@ svg { /* icons */
     flex-direction: column; /* Stack items vertically */
     justify-content: center;
 }
+.source{
+    font-size: 16px;
+    opacity: 0.8;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 10px;
+}
+#source_url{
+    opacity: 0.6;
+    color:#ececec;
+}
 
 .active_screen {
     opacity: 1;
@@ -37,10 +48,9 @@ svg { /* icons */
     pointer-events: none;
 }
 
-.data_page { /* numbers page */
-    /* generic attributes moved to the .screen class */
+/* .data_page { 
 
-}
+} */
 
 .data_page .total_data{
     font-size: 70px;
@@ -55,3 +65,55 @@ svg { /* icons */
     justify-content: center;
     align-items: center;
 }
+
+.image-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.after {
+    position: relative;
+    width: 100%;
+    object-fit:cover;
+}
+
+.before-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.before-container .before {
+    margin: 0;
+    width: 100%;
+    /* height: 100%; */
+    object-fit: cover;
+    animation: slide-out 3.5s ease-in-out forwards;
+}
+
+@keyframes slide-out {
+    0% {
+        clip-path: inset(0 0 0 0);
+    }
+    100% {
+        clip-path: inset(0 100% 0 0);
+    }
+}
+
+.image_description {
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    font-size: 24px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.85);
+    border-radius: 10px;
+  }

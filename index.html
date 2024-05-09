@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaza</title>
+    <title>Gazze</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="/images/flag.ico">
 </head>
 </head>
 <body>
@@ -12,15 +13,13 @@
         <h1 id="total_gaza">
             toplam
             <span class="number"  id="total_number">0</span>
-            kişi!
-            
+            kişi öldürüldü!
         </h1>
         <div class="other_data">
             <h2 id="children_gaza">
                 <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 640 512" class="text-4xl text-center block mx-auto" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M160 0a64 64 0 1 1 0 128A64 64 0 1 1 160 0zM88 480V400H70.2c-10.9 0-18.6-10.7-15.2-21.1l31.1-93.4L57.5 323.3c-10.7 14.1-30.8 16.8-44.8 6.2s-16.8-30.7-6.2-44.8L65.4 207c22.4-29.6 57.5-47 94.6-47s72.2 17.4 94.6 47l58.9 77.7c10.7 14.1 7.9 34.2-6.2 44.8s-34.2 7.9-44.8-6.2l-28.6-37.8L265 378.9c3.5 10.4-4.3 21.1-15.2 21.1H232v80c0 17.7-14.3 32-32 32s-32-14.3-32-32V400H152v80c0 17.7-14.3 32-32 32s-32-14.3-32-32zM480 0a64 64 0 1 1 0 128A64 64 0 1 1 480 0zm-8 384v96c0 17.7-14.3 32-32 32s-32-14.3-32-32V300.5L395.1 321c-9.4 15-29.2 19.4-44.1 10s-19.4-29.2-10-44.1l51.7-82.1c17.6-27.9 48.3-44.9 81.2-44.9h12.3c33 0 63.7 16.9 81.2 44.9L619.1 287c9.4 15 4.9 34.7-10 44.1s-34.7 4.9-44.1-10L552 300.5V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V384H472z"></path></svg>
                 <span class="number"  id="children_number">0</span>
                 çocuk
-                
             </h2>
             <h2 id="women_gaza">
                 <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" class="text-4xl text-center block mx-auto" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><circle cx="255.75" cy="56" r="56"></circle><path d="M394.63 277.9l-10.33-34.41v-.11l-22.46-74.86h-.05l-2.51-8.45a44.87 44.87 0 00-43-32.08h-120a44.84 44.84 0 00-43 32.08l-2.51 8.45h-.06l-22.46 74.86v.11l-10.37 34.41c-3.12 10.39 2.3 21.66 12.57 25.14a20 20 0 0025.6-13.18l25.58-85.25 2.17-7.23a8 8 0 0115.53 2.62 7.78 7.78 0 01-.17 1.61L155.43 347.4a16 16 0 0015.32 20.6h29v114.69c0 16.46 10.53 29.31 24 29.31s24-12.85 24-29.31V368h16v114.69c0 16.46 10.53 29.31 24 29.31s24-12.85 24-29.31V368h30a16 16 0 0015.33-20.6l-43.74-145.81a7.52 7.52 0 01-.16-1.59 8 8 0 0115.54-2.63l2.17 7.23 25.57 85.25A20 20 0 00382.05 303c10.27-3.44 15.69-14.71 12.58-25.1z"></path></svg>
@@ -38,20 +37,35 @@
                 sağlık çalışanı
             </h2>
         </div>
-        
+        <div class="source">
+            Kaynak: <a href="https://data.techforpalestine.org/"  id="source_url">https://data.techforpalestine.org</a>
+        </div>  
     </div>
     
     <div id="quote_page_1" class="screen">
-        <h2>"Soykırım, insanlık tarihindeki en karanlık ve utanç verici sayfalardan biridir, ve maalesef hala sona ermedi."</h1>
+        <h2>"Soykırım, insanlık tarihindeki en karanlık ve utanç verici sayfalardan biridir, ve maalesef hala sona ermedi."</h2>
     </div>
-    <div id="image_page_1" class="screen">
-        <h2>(Gazze öncesi - sonrası)</h1>
+    <div id="image_page_1" class="image_page screen">
+        <div class="image-container">
+            <img src="images/gaza_after.jpeg" alt="After" class="after">
+            <div class="before-container">
+                <img src="images/gaza_before.jpeg" alt="Before" class="before">
+            </div>
+            <h2 class="image_description">Gazze öncesi - sonrası</h2>
+        </div>
+        
     </div>
     <div id="quote_page_2" class="screen">
-        <h2>"Sağlık çalışanlarının hedef alınması, insanlığın en temel değerlerine yapılmış bir saldırıdır ve kesinlikle kınanmalıdır."</h1>
+        <h2>"Sağlık çalışanlarının hedef alınması, insanlığın en temel değerlerine yapılmış bir saldırıdır ve kesinlikle kınanmalıdır."</h2>
     </div>
-    <div id="image_page_2" class="screen">
-        <h2>(Şifa hastanesi öncesi - sonrası)</h1>
+    <div id="image_page_2" class="image_page screen">
+        <div class="image-container">
+            <img src="images/shifa_after.jpg" alt="After" class="after">
+            <div class="before-container">
+                <img src="images/shifa_before.jpg" alt="Before" class="before">
+            </div>
+            <h2 class="image_description">Şifa Hastanesi öncesi - sonrası</h2>
+        </div>
     </div>
     
     
